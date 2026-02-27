@@ -1,0 +1,89 @@
+name: SimCorp Dimension APIs
+description: Investment management software solution providing APIs for portfolio management, accounting, risk management, and investment operations
+image: https://www.simcorp.com/logo.png
+url: https://www.simcorp.com
+created: '2024'
+modified: '2024'
+apis:
+- name: SimCorp Dimension Data API
+  description: RESTful API for accessing portfolio data, positions, transactions, and market data from SimCorp Dimension
+  image: https://www.simcorp.com/api-logo.png
+  humanURL: https://www.simcorp.com/products/simcorp-dimension
+  baseURL: https://api.simcorp.com/dimension/v1
+  tags:
+  - Portfolio Management
+  - Investment Data
+  - Financial Services
+  - Asset Management
+  properties:
+  - type: Documentation
+    url: https://developer.simcorp.com/dimension/data-api
+  - type: OpenAPI
+    url: https://api.simcorp.com/dimension/v1/openapi.json
+  - type: Authentication
+    url: https://developer.simcorp.com/dimension/authentication
+  contact:
+  - FN: SimCorp API Support
+    email: apisupport@simcorp.com
+    url: https://www.simcorp.com/support
+- name: SimCorp Dimension Integration API
+  description: API for integrating third-party systems with SimCorp Dimension for data synchronization and workflow automation
+  image: https://www.simcorp.com/api-logo.png
+  humanURL: https://www.simcorp.com/products/simcorp-dimension/integration
+  baseURL: https://api.simcorp.com/dimension/integration/v1
+  tags:
+  - Integration
+  - Data Synchronization
+  - Workflow Automation
+  - Financial Services
+  properties:
+  - type: Documentation
+    url: https://developer.simcorp.com/dimension/integration-api
+  - type: OpenAPI
+    url: https://api.simcorp.com/dimension/integration/v1/openapi.json
+  - type: Webhooks
+    url: https://developer.simcorp.com/dimension/webhooks
+  contact:
+  - FN: SimCorp API Support
+    email: apisupport@simcorp.com
+    url: https://www.simcorp.com/support
+- name: SimCorp Dimension Analytics API
+  description: API for accessing analytics, performance metrics, risk calculations, and reporting data
+  image: https://www.simcorp.com/api-logo.png
+  humanURL: https://www.simcorp.com/products/simcorp-dimension/analytics
+  baseURL: https://api.simcorp.com/dimension/analytics/v1
+  tags:
+  - Analytics
+  - Risk Management
+  - Performance
+  - Reporting
+  properties:
+  - type: Documentation
+    url: https://developer.simcorp.com/dimension/analytics-api
+  - type: OpenAPI
+    url: https://api.simcorp.com/dimension/analytics/v1/openapi.json
+  - type: Rate Limits
+    url: https://developer.simcorp.com/dimension/rate-limits
+  contact:
+  - FN: SimCorp API Support
+    email: apisupport@simcorp.com
+    url: https://www.simcorp.com/support
+maintainers:
+- FN: SimCorp Developer Relations
+  email: developer@simcorp.com
+  url: https://developer.simcorp.com
+tags:
+- Investment Management
+- Portfolio Management
+- Asset Management
+- Financial Technology
+- Risk Management
+- Financial Data
+- Enterprise Software
+include:
+- name: Developer Portal
+  url: https://developer.simcorp.com
+- name: API Status
+  url: https://status.simcorp.com
+- name: Release Notes
+  url: https://developer.simcorp.com/changelog
