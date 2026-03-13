@@ -1,0 +1,367 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thesim.dev/schemas/simcorp-dimension/portfolio.json",
+  "title": "SimCorp Dimension Portfolio",
+  "description": "Schema for a portfolio entity in the SimCorp Integration Model (SIM). Portfolios represent investment portfolios managed within SimCorp Dimension, supporting multi-asset class holdings across the Investment Book of Record (IBOR). Based on the SimCorp Dimension data model documented at thesim.dev and simcorp.com.",
+  "type": "object",
+  "required": [
+    "portfolioCode",
+    "portfolioName"
+  ],
+  "properties": {
+    "portfolioId": {
+      "type": "integer",
+      "description": "Unique internal identifier for the portfolio within SimCorp Dimension"
+    },
+    "portfolioCode": {
+      "type": "string",
+      "description": "Short alphanumeric code uniquely identifying the portfolio",
+      "maxLength": 20
+    },
+    "portfolioName": {
+      "type": "string",
+      "description": "Full descriptive name of the portfolio",
+      "maxLength": 255
+    },
+    "portfolioType": {
+      "type": "string",
+      "description": "Classification of the portfolio by its operational role",
+      "enum": [
+        "REAL",
+        "MODEL",
+        "BENCHMARK",
+        "COMPOSITE",
+        "SLEEVE",
+        "MASTER",
+        "FUND",
+        "MANDATE",
+        "INTERNAL"
+      ]
+    },
+    "portfolioStatus": {
+      "type": "string",
+      "description": "Current lifecycle status of the portfolio",
+      "enum": [
+        "ACTIVE",
+        "CLOSED",
+        "PENDING",
+        "SUSPENDED",
+        "TERMINATED"
+      ]
+    },
+    "baseCurrency": {
+      "type": "string",
+      "description": "ISO 4217 currency code for the portfolio base currency used for valuation and reporting",
+      "pattern": "^[A-Z]{3}$",
+      "examples": ["USD", "EUR", "GBP", "DKK"]
+    },
+    "inceptionDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the portfolio was established and began tracking positions"
+    },
+    "terminationDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the portfolio was closed or terminated, null if still active"
+    },
+    "legalEntity": {
+      "type": "string",
+      "description": "The legal entity or organization that owns the portfolio",
+      "maxLength": 255
+    },
+    "investmentManager": {
+      "type": "string",
+      "description": "Name or identifier of the portfolio manager or management team responsible",
+      "maxLength": 255
+    },
+    "custodian": {
+      "type": "string",
+      "description": "The custodian bank or institution holding the portfolio assets",
+      "maxLength": 255
+    },
+    "benchmark": {
+      "type": "object",
+      "description": "The benchmark portfolio or index used for performance comparison",
+      "properties": {
+        "benchmarkCode": {
+          "type": "string",
+          "description": "Code identifying the benchmark portfolio or index"
+        },
+        "benchmarkName": {
+          "type": "string",
+          "description": "Descriptive name of the benchmark"
+        },
+        "benchmarkType": {
+          "type": "string",
+          "description": "Type of benchmark used",
+          "enum": [
+            "INDEX",
+            "PORTFOLIO",
+            "COMPOSITE",
+            "CUSTOM",
+            "BLENDED"
+          ]
+        }
+      }
+    },
+    "investmentStrategy": {
+      "type": "string",
+      "description": "Description of the investment strategy or mandate governing the portfolio",
+      "maxLength": 1000
+    },
+    "assetClasses": {
+      "type": "array",
+      "description": "Asset classes that the portfolio is authorized to hold",
+      "items": {
+        "type": "string",
+        "enum": [
+          "EQUITY",
+          "FIXED_INCOME",
+          "MONEY_MARKET",
+          "DERIVATIVES",
+          "ALTERNATIVES",
+          "PRIVATE_EQUITY",
+          "REAL_ESTATE",
+          "COMMODITIES",
+          "FX",
+          "STRUCTURED_PRODUCTS",
+          "FUND"
+        ]
+      }
+    },
+    "portfolioHierarchy": {
+      "type": "object",
+      "description": "Hierarchical structure placing this portfolio within a portfolio tree or organizational grouping",
+      "properties": {
+        "parentPortfolioCode": {
+          "type": ["string", "null"],
+          "description": "Code of the parent portfolio in a master-sleeve or composite structure"
+        },
+        "level": {
+          "type": "integer",
+          "description": "Depth level within the portfolio hierarchy, where 0 is the top-level",
+          "minimum": 0
+        },
+        "groupCode": {
+          "type": "string",
+          "description": "Code identifying the portfolio group or organizational unit"
+        },
+        "groupName": {
+          "type": "string",
+          "description": "Name of the portfolio group"
+        }
+      }
+    },
+    "positions": {
+      "type": "array",
+      "description": "Current holdings or positions within the portfolio from the Investment Book of Record (IBOR)",
+      "items": {
+        "$ref": "#/$defs/Position"
+      }
+    },
+    "complianceRules": {
+      "type": "array",
+      "description": "Investment compliance rules and constraints applied to the portfolio",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ruleId": {
+            "type": "string",
+            "description": "Identifier of the compliance rule"
+          },
+          "ruleName": {
+            "type": "string",
+            "description": "Name of the compliance rule"
+          },
+          "ruleType": {
+            "type": "string",
+            "description": "Category of the compliance rule",
+            "enum": [
+              "PRE_TRADE",
+              "POST_TRADE",
+              "REGULATORY",
+              "INTERNAL",
+              "MANDATE"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Current compliance status",
+            "enum": [
+              "COMPLIANT",
+              "BREACH",
+              "WARNING",
+              "NOT_CHECKED"
+            ]
+          }
+        }
+      }
+    },
+    "valuationSummary": {
+      "type": "object",
+      "description": "Summary valuation data for the portfolio as of the last valuation date",
+      "properties": {
+        "valuationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the most recent portfolio valuation"
+        },
+        "totalMarketValue": {
+          "type": "number",
+          "description": "Total market value of the portfolio in base currency"
+        },
+        "totalCostValue": {
+          "type": "number",
+          "description": "Total cost basis of the portfolio in base currency"
+        },
+        "cashBalance": {
+          "type": "number",
+          "description": "Total cash balance across all cash accounts in base currency"
+        },
+        "unrealizedGainLoss": {
+          "type": "number",
+          "description": "Total unrealized gain or loss in base currency"
+        },
+        "netAssetValue": {
+          "type": "number",
+          "description": "Net asset value (NAV) of the portfolio in base currency"
+        }
+      }
+    },
+    "accountingMethod": {
+      "type": "string",
+      "description": "The accounting method used for the portfolio in the Accounting Book of Record (ABOR)",
+      "enum": [
+        "AVERAGE_COST",
+        "FIFO",
+        "LIFO",
+        "SPECIFIC_LOT",
+        "HIGHEST_COST",
+        "LOWEST_COST"
+      ]
+    },
+    "reportingCurrency": {
+      "type": "string",
+      "description": "Currency used for client reporting if different from base currency",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "classifications": {
+      "type": "object",
+      "description": "User-defined and system classification attributes for the portfolio",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "customProperties": {
+      "type": "object",
+      "description": "User-defined custom fields extending the standard portfolio attributes",
+      "additionalProperties": true
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the portfolio record was created in SimCorp Dimension"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the portfolio record was last modified"
+    }
+  },
+  "$defs": {
+    "Position": {
+      "$id": "#Position",
+      "title": "Portfolio Position",
+      "description": "A holding or position within a SimCorp Dimension portfolio, representing a quantity of an instrument held at a given status level within the IBOR.",
+      "type": "object",
+      "required": [
+        "instrumentCode",
+        "quantity"
+      ],
+      "properties": {
+        "positionId": {
+          "type": "integer",
+          "description": "Unique identifier for the position record"
+        },
+        "instrumentCode": {
+          "type": "string",
+          "description": "Code identifying the instrument held in this position"
+        },
+        "instrumentName": {
+          "type": "string",
+          "description": "Name of the instrument held"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Number of units, shares, or nominal amount held"
+        },
+        "settlementQuantity": {
+          "type": "number",
+          "description": "Quantity at the settled position level"
+        },
+        "marketValue": {
+          "type": "number",
+          "description": "Current market value of the position in portfolio base currency"
+        },
+        "costValue": {
+          "type": "number",
+          "description": "Cost basis of the position in portfolio base currency"
+        },
+        "accruedInterest": {
+          "type": "number",
+          "description": "Accrued interest for fixed income positions"
+        },
+        "unrealizedGainLoss": {
+          "type": "number",
+          "description": "Unrealized profit or loss on the position"
+        },
+        "weight": {
+          "type": "number",
+          "description": "Position weight as a percentage of total portfolio market value",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "positionDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date for which the position is reported"
+        },
+        "statusLevel": {
+          "type": "string",
+          "description": "Transaction status level defining the position view, reflecting the front-to-back lifecycle stage",
+          "enum": [
+            "ENTRY",
+            "TEMPORARILY_BOOKED",
+            "FINALLY_BOOKED",
+            "SETTLED",
+            "CONFIRMED"
+          ]
+        },
+        "positionCurrency": {
+          "type": "string",
+          "description": "ISO 4217 currency code of the position",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "exchangeRate": {
+          "type": "number",
+          "description": "Exchange rate applied to convert from position currency to portfolio base currency"
+        }
+      }
+    },
+
+    "TransactionStatusLevel": {
+      "$id": "#TransactionStatusLevel",
+      "title": "Transaction Status Level",
+      "description": "Defines the status levels through which a transaction progresses in SimCorp Dimension, from entry through to final settlement. These status levels serve as position drivers.",
+      "type": "string",
+      "enum": [
+        "ENTRY",
+        "TEMPORARILY_BOOKED",
+        "FINALLY_BOOKED",
+        "SETTLED",
+        "CONFIRMED"
+      ]
+    }
+  }
+}

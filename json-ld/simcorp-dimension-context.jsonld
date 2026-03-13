@@ -1,0 +1,319 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sim": "https://thesim.dev/ns/",
+    "schema": "https://schema.org/",
+    "fibo": "https://spec.edmcouncil.org/fibo/ontology/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Portfolio": {
+      "@id": "sim:Portfolio",
+      "@context": {
+        "portfolioId": "sim:portfolioId",
+        "portfolioCode": {
+          "@id": "sim:portfolioCode",
+          "@type": "xsd:string"
+        },
+        "portfolioName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "portfolioType": "sim:portfolioType",
+        "portfolioStatus": "sim:portfolioStatus",
+        "baseCurrency": {
+          "@id": "sim:baseCurrency",
+          "@type": "xsd:string"
+        },
+        "inceptionDate": {
+          "@id": "sim:inceptionDate",
+          "@type": "xsd:date"
+        },
+        "terminationDate": {
+          "@id": "sim:terminationDate",
+          "@type": "xsd:date"
+        },
+        "legalEntity": {
+          "@id": "sim:legalEntity",
+          "@type": "xsd:string"
+        },
+        "investmentManager": {
+          "@id": "sim:investmentManager",
+          "@type": "xsd:string"
+        },
+        "custodian": {
+          "@id": "sim:custodian",
+          "@type": "xsd:string"
+        },
+        "benchmark": {
+          "@id": "sim:benchmark",
+          "@type": "@id"
+        },
+        "investmentStrategy": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "assetClasses": {
+          "@id": "sim:assetClasses",
+          "@container": "@set"
+        },
+        "accountingMethod": "sim:accountingMethod",
+        "reportingCurrency": {
+          "@id": "sim:reportingCurrency",
+          "@type": "xsd:string"
+        },
+        "positions": {
+          "@id": "sim:hasPosition",
+          "@container": "@set"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Instrument": {
+      "@id": "sim:Instrument",
+      "@context": {
+        "instrumentId": "sim:instrumentId",
+        "instrumentCode": {
+          "@id": "sim:instrumentCode",
+          "@type": "xsd:string"
+        },
+        "instrumentName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "instrumentType": "sim:instrumentType",
+        "instrumentStatus": "sim:instrumentStatus",
+        "assetClass": "sim:assetClass",
+        "isin": {
+          "@id": "sim:isin",
+          "@type": "xsd:string"
+        },
+        "cusip": {
+          "@id": "sim:cusip",
+          "@type": "xsd:string"
+        },
+        "sedol": {
+          "@id": "sim:sedol",
+          "@type": "xsd:string"
+        },
+        "ticker": {
+          "@id": "sim:ticker",
+          "@type": "xsd:string"
+        },
+        "figi": {
+          "@id": "sim:figi",
+          "@type": "xsd:string"
+        },
+        "currency": {
+          "@id": "sim:currency",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "sim:country",
+          "@type": "xsd:string"
+        },
+        "issuer": {
+          "@id": "sim:issuedBy",
+          "@type": "@id"
+        },
+        "exchange": {
+          "@id": "sim:listedOn",
+          "@type": "@id"
+        },
+        "couponRate": {
+          "@id": "sim:couponRate",
+          "@type": "xsd:decimal"
+        },
+        "maturityDate": {
+          "@id": "sim:maturityDate",
+          "@type": "xsd:date"
+        },
+        "parValue": {
+          "@id": "sim:parValue",
+          "@type": "xsd:decimal"
+        },
+        "strikePrice": {
+          "@id": "sim:strikePrice",
+          "@type": "xsd:decimal"
+        },
+        "expirationDate": {
+          "@id": "sim:expirationDate",
+          "@type": "xsd:date"
+        },
+        "ratings": {
+          "@id": "sim:hasRating",
+          "@container": "@set"
+        },
+        "classifications": {
+          "@id": "sim:hasClassification",
+          "@type": "@id"
+        },
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedDate": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Position": {
+      "@id": "sim:Position",
+      "@context": {
+        "positionId": "sim:positionId",
+        "instrumentCode": {
+          "@id": "sim:holdsInstrument",
+          "@type": "xsd:string"
+        },
+        "instrumentName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "quantity": {
+          "@id": "sim:quantity",
+          "@type": "xsd:decimal"
+        },
+        "marketValue": {
+          "@id": "sim:marketValue",
+          "@type": "xsd:decimal"
+        },
+        "costValue": {
+          "@id": "sim:costValue",
+          "@type": "xsd:decimal"
+        },
+        "accruedInterest": {
+          "@id": "sim:accruedInterest",
+          "@type": "xsd:decimal"
+        },
+        "unrealizedGainLoss": {
+          "@id": "sim:unrealizedGainLoss",
+          "@type": "xsd:decimal"
+        },
+        "weight": {
+          "@id": "sim:weight",
+          "@type": "xsd:decimal"
+        },
+        "positionDate": {
+          "@id": "sim:positionDate",
+          "@type": "xsd:date"
+        },
+        "statusLevel": "sim:statusLevel",
+        "positionCurrency": {
+          "@id": "sim:positionCurrency",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Benchmark": {
+      "@id": "sim:Benchmark",
+      "@context": {
+        "benchmarkCode": {
+          "@id": "sim:benchmarkCode",
+          "@type": "xsd:string"
+        },
+        "benchmarkName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "benchmarkType": "sim:benchmarkType"
+      }
+    },
+
+    "Issuer": {
+      "@id": "sim:Issuer",
+      "@context": {
+        "issuerCode": {
+          "@id": "sim:issuerCode",
+          "@type": "xsd:string"
+        },
+        "issuerName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "issuerType": "sim:issuerType",
+        "issuerCountry": {
+          "@id": "sim:issuerCountry",
+          "@type": "xsd:string"
+        },
+        "creditRating": {
+          "@id": "sim:creditRating",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "Exchange": {
+      "@id": "sim:Exchange",
+      "@context": {
+        "exchangeCode": {
+          "@id": "sim:exchangeCode",
+          "@type": "xsd:string"
+        },
+        "exchangeName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "listingDate": {
+          "@id": "sim:listingDate",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "ValuationSummary": {
+      "@id": "sim:ValuationSummary",
+      "@context": {
+        "valuationDate": {
+          "@id": "sim:valuationDate",
+          "@type": "xsd:date"
+        },
+        "totalMarketValue": {
+          "@id": "sim:totalMarketValue",
+          "@type": "xsd:decimal"
+        },
+        "totalCostValue": {
+          "@id": "sim:totalCostValue",
+          "@type": "xsd:decimal"
+        },
+        "cashBalance": {
+          "@id": "sim:cashBalance",
+          "@type": "xsd:decimal"
+        },
+        "netAssetValue": {
+          "@id": "sim:netAssetValue",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Rating": {
+      "@id": "sim:Rating",
+      "@context": {
+        "agency": {
+          "@id": "sim:ratingAgency",
+          "@type": "xsd:string"
+        },
+        "rating": {
+          "@id": "sim:ratingValue",
+          "@type": "xsd:string"
+        },
+        "ratingDate": {
+          "@id": "sim:ratingDate",
+          "@type": "xsd:date"
+        },
+        "outlook": "sim:ratingOutlook"
+      }
+    }
+  }
+}

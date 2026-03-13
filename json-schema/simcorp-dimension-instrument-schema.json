@@ -1,0 +1,718 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thesim.dev/schemas/simcorp-dimension/instrument.json",
+  "title": "SimCorp Dimension Instrument",
+  "description": "Schema for a financial instrument entity in the SimCorp Integration Model (SIM). Instruments represent securities and financial products managed within SimCorp Dimension, covering equities, fixed income, derivatives, alternatives, funds, and structured products. Each instrument entity can have well over 100 data fields. Based on the SimCorp Dimension data model documented at thesim.dev and simcorp.com.",
+  "type": "object",
+  "required": [
+    "instrumentCode",
+    "instrumentType"
+  ],
+  "properties": {
+    "instrumentId": {
+      "type": "integer",
+      "description": "Unique internal identifier for the instrument within SimCorp Dimension"
+    },
+    "instrumentCode": {
+      "type": "string",
+      "description": "Short alphanumeric code uniquely identifying the instrument in the system",
+      "maxLength": 50
+    },
+    "instrumentName": {
+      "type": "string",
+      "description": "Full descriptive name of the instrument",
+      "maxLength": 255
+    },
+    "instrumentType": {
+      "type": "string",
+      "description": "Primary classification of the instrument by asset type",
+      "enum": [
+        "COMMON_SHARE",
+        "PREFERRED_SHARE",
+        "DEPOSITORY_RECEIPT",
+        "GOVERNMENT_BOND",
+        "CORPORATE_BOND",
+        "MUNICIPAL_BOND",
+        "CONVERTIBLE_BOND",
+        "FLOATING_RATE_NOTE",
+        "ZERO_COUPON_BOND",
+        "MORTGAGE_BACKED_SECURITY",
+        "ASSET_BACKED_SECURITY",
+        "MONEY_MARKET_INSTRUMENT",
+        "TREASURY_BILL",
+        "COMMERCIAL_PAPER",
+        "CERTIFICATE_OF_DEPOSIT",
+        "MUTUAL_FUND",
+        "ETF",
+        "HEDGE_FUND",
+        "PRIVATE_EQUITY_FUND",
+        "REAL_ESTATE_FUND",
+        "OPTION",
+        "FUTURE",
+        "SWAP",
+        "FORWARD",
+        "CDS",
+        "CFD",
+        "WARRANT",
+        "STRUCTURED_PRODUCT",
+        "FX_SPOT",
+        "FX_FORWARD",
+        "FX_OPTION",
+        "REPO",
+        "LOAN",
+        "REAL_ESTATE",
+        "COMMODITY",
+        "INDEX",
+        "CASH"
+      ]
+    },
+    "instrumentStatus": {
+      "type": "string",
+      "description": "Current lifecycle status of the instrument",
+      "enum": [
+        "ACTIVE",
+        "MATURED",
+        "REDEEMED",
+        "DEFAULTED",
+        "SUSPENDED",
+        "DELISTED",
+        "EXPIRED",
+        "CALLED",
+        "INACTIVE"
+      ]
+    },
+    "assetClass": {
+      "type": "string",
+      "description": "Broad asset class categorization",
+      "enum": [
+        "EQUITY",
+        "FIXED_INCOME",
+        "MONEY_MARKET",
+        "DERIVATIVES",
+        "ALTERNATIVES",
+        "PRIVATE_EQUITY",
+        "REAL_ESTATE",
+        "COMMODITIES",
+        "FX",
+        "STRUCTURED_PRODUCTS",
+        "FUND",
+        "CASH"
+      ]
+    },
+    "identifiers": {
+      "type": "object",
+      "description": "Standard market identifiers for the instrument",
+      "properties": {
+        "isin": {
+          "type": "string",
+          "description": "International Securities Identification Number (ISO 6166)",
+          "pattern": "^[A-Z]{2}[A-Z0-9]{9}[0-9]$",
+          "examples": ["US0378331005", "DK0010274414"]
+        },
+        "cusip": {
+          "type": "string",
+          "description": "CUSIP identifier for North American securities",
+          "pattern": "^[A-Z0-9]{9}$"
+        },
+        "sedol": {
+          "type": "string",
+          "description": "SEDOL identifier for UK and Irish securities",
+          "pattern": "^[A-Z0-9]{7}$"
+        },
+        "ticker": {
+          "type": "string",
+          "description": "Exchange ticker symbol",
+          "maxLength": 20
+        },
+        "bloombergId": {
+          "type": "string",
+          "description": "Bloomberg Global Identifier (BBGID) or ticker"
+        },
+        "reutersRic": {
+          "type": "string",
+          "description": "Reuters Instrument Code (RIC)"
+        },
+        "figi": {
+          "type": "string",
+          "description": "Financial Instrument Global Identifier (FIGI)",
+          "pattern": "^[A-Z0-9]{12}$"
+        },
+        "internalId": {
+          "type": "string",
+          "description": "Additional internal or proprietary identifier"
+        }
+      }
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code of the instrument denomination",
+      "pattern": "^[A-Z]{3}$",
+      "examples": ["USD", "EUR", "GBP", "DKK"]
+    },
+    "country": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code of the instrument domicile or issuer country",
+      "pattern": "^[A-Z]{2}$",
+      "examples": ["US", "DK", "GB", "DE"]
+    },
+    "issuer": {
+      "type": "object",
+      "description": "Information about the entity that issued the instrument",
+      "properties": {
+        "issuerCode": {
+          "type": "string",
+          "description": "Internal code identifying the issuer"
+        },
+        "issuerName": {
+          "type": "string",
+          "description": "Full legal name of the issuer"
+        },
+        "issuerType": {
+          "type": "string",
+          "description": "Classification of the issuing entity",
+          "enum": [
+            "CORPORATE",
+            "GOVERNMENT",
+            "SUPRANATIONAL",
+            "MUNICIPAL",
+            "AGENCY",
+            "SPV",
+            "FUND_MANAGER"
+          ]
+        },
+        "issuerCountry": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code of the issuer",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "creditRating": {
+          "type": "string",
+          "description": "Credit rating of the issuer from a recognized rating agency"
+        }
+      }
+    },
+    "exchange": {
+      "type": "object",
+      "description": "Primary exchange or trading venue information",
+      "properties": {
+        "exchangeCode": {
+          "type": "string",
+          "description": "Market Identifier Code (MIC) per ISO 10383",
+          "pattern": "^[A-Z]{4}$",
+          "examples": ["XNYS", "XNAS", "XLON", "XCSE"]
+        },
+        "exchangeName": {
+          "type": "string",
+          "description": "Name of the exchange or trading venue"
+        },
+        "listingDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the instrument was first listed on this exchange"
+        },
+        "delistingDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the instrument was delisted, null if still listed"
+        }
+      }
+    },
+    "equityDetails": {
+      "type": "object",
+      "description": "Additional attributes specific to equity instruments (common shares, preferred shares, depository receipts)",
+      "properties": {
+        "sharesOutstanding": {
+          "type": "number",
+          "description": "Total number of shares currently outstanding"
+        },
+        "marketCapitalization": {
+          "type": "number",
+          "description": "Total market capitalization in instrument currency"
+        },
+        "dividendCurrency": {
+          "type": "string",
+          "description": "ISO 4217 currency code for dividend payments",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "dividendFrequency": {
+          "type": "string",
+          "description": "Frequency of dividend payments",
+          "enum": [
+            "ANNUAL",
+            "SEMI_ANNUAL",
+            "QUARTERLY",
+            "MONTHLY",
+            "IRREGULAR",
+            "NONE"
+          ]
+        },
+        "sector": {
+          "type": "string",
+          "description": "Industry sector classification (e.g., GICS sector)"
+        },
+        "industry": {
+          "type": "string",
+          "description": "Industry classification within the sector"
+        },
+        "votingRightsPerShare": {
+          "type": "number",
+          "description": "Number of voting rights per share"
+        }
+      }
+    },
+    "fixedIncomeDetails": {
+      "type": "object",
+      "description": "Additional attributes specific to fixed income instruments (bonds, notes, bills)",
+      "properties": {
+        "couponRate": {
+          "type": "number",
+          "description": "Annual coupon rate as a percentage",
+          "minimum": 0,
+          "examples": [5.25, 3.0, 0.0]
+        },
+        "couponFrequency": {
+          "type": "string",
+          "description": "Frequency of coupon payments",
+          "enum": [
+            "ANNUAL",
+            "SEMI_ANNUAL",
+            "QUARTERLY",
+            "MONTHLY",
+            "AT_MATURITY",
+            "ZERO_COUPON"
+          ]
+        },
+        "couponType": {
+          "type": "string",
+          "description": "Nature of the coupon payment",
+          "enum": [
+            "FIXED",
+            "FLOATING",
+            "STEP_UP",
+            "ZERO",
+            "INFLATION_LINKED",
+            "VARIABLE"
+          ]
+        },
+        "dayCountConvention": {
+          "type": "string",
+          "description": "Day count convention used for interest calculations",
+          "enum": [
+            "ACT/ACT",
+            "ACT/360",
+            "ACT/365",
+            "30/360",
+            "30E/360",
+            "ACT/365L"
+          ]
+        },
+        "maturityDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the instrument matures and principal is repaid"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the instrument was originally issued"
+        },
+        "issuePrice": {
+          "type": "number",
+          "description": "Price at which the instrument was originally issued, as a percentage of par"
+        },
+        "parValue": {
+          "type": "number",
+          "description": "Face value or nominal amount per unit",
+          "examples": [100, 1000]
+        },
+        "redemptionPrice": {
+          "type": "number",
+          "description": "Price at which the bond will be redeemed at maturity, as a percentage of par"
+        },
+        "yieldToMaturity": {
+          "type": "number",
+          "description": "Current yield to maturity as a percentage"
+        },
+        "callable": {
+          "type": "boolean",
+          "description": "Whether the instrument has an embedded call option"
+        },
+        "callDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Earliest date the bond can be called by the issuer"
+        },
+        "putable": {
+          "type": "boolean",
+          "description": "Whether the instrument has an embedded put option"
+        },
+        "floatingRateIndex": {
+          "type": "string",
+          "description": "Reference rate for floating rate instruments (e.g., SOFR, EURIBOR, SONIA)"
+        },
+        "spread": {
+          "type": "number",
+          "description": "Spread over the reference rate in basis points for floating rate instruments"
+        },
+        "seniority": {
+          "type": "string",
+          "description": "Seniority of the debt in the capital structure",
+          "enum": [
+            "SENIOR_SECURED",
+            "SENIOR_UNSECURED",
+            "SUBORDINATED",
+            "JUNIOR_SUBORDINATED",
+            "MEZZANINE"
+          ]
+        }
+      }
+    },
+    "derivativeDetails": {
+      "type": "object",
+      "description": "Additional attributes specific to derivative instruments, managed through the XpressInstruments module in SimCorp Dimension",
+      "properties": {
+        "underlyingInstrumentCode": {
+          "type": "string",
+          "description": "Code of the underlying instrument or reference entity"
+        },
+        "underlyingInstrumentName": {
+          "type": "string",
+          "description": "Name of the underlying instrument"
+        },
+        "expirationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the derivative contract expires"
+        },
+        "strikePrice": {
+          "type": "number",
+          "description": "Strike or exercise price for options and warrants"
+        },
+        "contractSize": {
+          "type": "number",
+          "description": "Number of units of the underlying per contract"
+        },
+        "exerciseStyle": {
+          "type": "string",
+          "description": "Exercise style for options",
+          "enum": [
+            "AMERICAN",
+            "EUROPEAN",
+            "BERMUDAN"
+          ]
+        },
+        "optionType": {
+          "type": "string",
+          "description": "Whether the option is a call or put",
+          "enum": [
+            "CALL",
+            "PUT"
+          ]
+        },
+        "settlementType": {
+          "type": "string",
+          "description": "How the derivative is settled at expiry",
+          "enum": [
+            "PHYSICAL",
+            "CASH",
+            "AUCTION"
+          ]
+        },
+        "notionalAmount": {
+          "type": "number",
+          "description": "Notional or nominal amount of the derivative contract"
+        },
+        "payLeg": {
+          "type": "object",
+          "description": "Pay leg details for swap instruments",
+          "properties": {
+            "rateType": {
+              "type": "string",
+              "enum": ["FIXED", "FLOATING"]
+            },
+            "rate": {
+              "type": "number",
+              "description": "Fixed rate or spread for the pay leg"
+            },
+            "referenceIndex": {
+              "type": "string",
+              "description": "Reference rate index for floating leg"
+            },
+            "frequency": {
+              "type": "string",
+              "enum": ["ANNUAL", "SEMI_ANNUAL", "QUARTERLY", "MONTHLY"]
+            }
+          }
+        },
+        "receiveLeg": {
+          "type": "object",
+          "description": "Receive leg details for swap instruments",
+          "properties": {
+            "rateType": {
+              "type": "string",
+              "enum": ["FIXED", "FLOATING"]
+            },
+            "rate": {
+              "type": "number",
+              "description": "Fixed rate or spread for the receive leg"
+            },
+            "referenceIndex": {
+              "type": "string",
+              "description": "Reference rate index for floating leg"
+            },
+            "frequency": {
+              "type": "string",
+              "enum": ["ANNUAL", "SEMI_ANNUAL", "QUARTERLY", "MONTHLY"]
+            }
+          }
+        }
+      }
+    },
+    "fundDetails": {
+      "type": "object",
+      "description": "Additional attributes specific to fund instruments (mutual funds, ETFs, hedge funds)",
+      "properties": {
+        "fundManager": {
+          "type": "string",
+          "description": "Name of the fund management company"
+        },
+        "navPerUnit": {
+          "type": "number",
+          "description": "Net Asset Value per unit or share"
+        },
+        "navDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the most recent NAV calculation"
+        },
+        "fundDomicile": {
+          "type": "string",
+          "description": "Country of fund domicile (ISO 3166-1 alpha-2)",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "fundStructure": {
+          "type": "string",
+          "description": "Legal structure of the fund",
+          "enum": [
+            "OPEN_ENDED",
+            "CLOSED_ENDED",
+            "UCITS",
+            "AIF",
+            "ETF",
+            "SICAV",
+            "FCP",
+            "UNIT_TRUST",
+            "LIMITED_PARTNERSHIP"
+          ]
+        },
+        "totalNetAssets": {
+          "type": "number",
+          "description": "Total net assets of the fund in fund currency"
+        },
+        "managementFee": {
+          "type": "number",
+          "description": "Annual management fee as a percentage"
+        },
+        "performanceFee": {
+          "type": ["number", "null"],
+          "description": "Performance fee as a percentage, if applicable"
+        },
+        "subscriptionFrequency": {
+          "type": "string",
+          "description": "Frequency at which subscriptions are accepted",
+          "enum": [
+            "DAILY",
+            "WEEKLY",
+            "MONTHLY",
+            "QUARTERLY",
+            "ANNUAL"
+          ]
+        },
+        "redemptionFrequency": {
+          "type": "string",
+          "description": "Frequency at which redemptions are processed",
+          "enum": [
+            "DAILY",
+            "WEEKLY",
+            "MONTHLY",
+            "QUARTERLY",
+            "ANNUAL"
+          ]
+        },
+        "redemptionNoticeDays": {
+          "type": "integer",
+          "description": "Number of days notice required for redemption"
+        }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "description": "Current and historical pricing data",
+      "properties": {
+        "lastPrice": {
+          "type": "number",
+          "description": "Most recent price of the instrument"
+        },
+        "priceDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the most recent price"
+        },
+        "priceType": {
+          "type": "string",
+          "description": "Type of price quoted",
+          "enum": [
+            "CLOSE",
+            "MID",
+            "BID",
+            "ASK",
+            "LAST",
+            "NAV",
+            "THEORETICAL"
+          ]
+        },
+        "priceCurrency": {
+          "type": "string",
+          "description": "Currency of the quoted price",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "priceSource": {
+          "type": "string",
+          "description": "Source or vendor providing the price data"
+        }
+      }
+    },
+    "ratings": {
+      "type": "array",
+      "description": "Credit ratings from recognized rating agencies",
+      "items": {
+        "type": "object",
+        "properties": {
+          "agency": {
+            "type": "string",
+            "description": "Rating agency providing the rating",
+            "enum": [
+              "S&P",
+              "MOODYS",
+              "FITCH",
+              "DBRS",
+              "OTHER"
+            ]
+          },
+          "rating": {
+            "type": "string",
+            "description": "The credit rating value (e.g., AAA, Aa1, BBB+)"
+          },
+          "ratingDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the rating was assigned or last updated"
+          },
+          "outlook": {
+            "type": "string",
+            "description": "Rating outlook",
+            "enum": [
+              "POSITIVE",
+              "STABLE",
+              "NEGATIVE",
+              "DEVELOPING",
+              "NOT_RATED"
+            ]
+          }
+        }
+      }
+    },
+    "classifications": {
+      "type": "object",
+      "description": "Classification codes and categories applied to the instrument for grouping, filtering, and regulatory reporting",
+      "properties": {
+        "cfiCode": {
+          "type": "string",
+          "description": "Classification of Financial Instruments code (ISO 10962)",
+          "pattern": "^[A-Z]{6}$"
+        },
+        "gicsCode": {
+          "type": "string",
+          "description": "Global Industry Classification Standard code"
+        },
+        "icbCode": {
+          "type": "string",
+          "description": "Industry Classification Benchmark code"
+        }
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "esgData": {
+      "type": "object",
+      "description": "Environmental, Social, and Governance data associated with the instrument",
+      "properties": {
+        "esgRating": {
+          "type": "string",
+          "description": "ESG rating value"
+        },
+        "esgProvider": {
+          "type": "string",
+          "description": "ESG data or rating provider"
+        },
+        "carbonIntensity": {
+          "type": "number",
+          "description": "Carbon intensity metric"
+        },
+        "sftdrClassification": {
+          "type": "string",
+          "description": "EU SFDR classification for the instrument",
+          "enum": [
+            "ARTICLE_6",
+            "ARTICLE_8",
+            "ARTICLE_9"
+          ]
+        },
+        "euTaxonomyAligned": {
+          "type": "boolean",
+          "description": "Whether the instrument is aligned with EU Taxonomy"
+        }
+      }
+    },
+    "settlementDetails": {
+      "type": "object",
+      "description": "Standard settlement information for the instrument",
+      "properties": {
+        "settlementCycle": {
+          "type": "string",
+          "description": "Standard settlement cycle (e.g., T+1, T+2)",
+          "examples": ["T+1", "T+2", "T+3"]
+        },
+        "settlementCurrency": {
+          "type": "string",
+          "description": "Currency used for settlement",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "clearingHouse": {
+          "type": "string",
+          "description": "Central counterparty or clearing house"
+        },
+        "depository": {
+          "type": "string",
+          "description": "Central securities depository holding the instrument"
+        }
+      }
+    },
+    "customProperties": {
+      "type": "object",
+      "description": "User-defined custom fields extending the standard instrument attributes. SimCorp Dimension supports extensive user-defined fields for custom calculations and classifications.",
+      "additionalProperties": true
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the instrument record was created in SimCorp Dimension"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the instrument record was last modified"
+    }
+  }
+}
