@@ -1,9 +1,5 @@
 name: SimCorp Dimension
-description: Investment management software solution providing APIs for 
-  portfolio management, accounting, risk management, and investment operations. 
-  SimCorp Dimension is part of the SimCorp One integrated platform, offering Web
-  APIs, Data Distribution APIs, and Streaming APIs through the SimCorp 
-  Integration Model (SIM) for front-to-back office investment management.
+description: Investment management software solution providing APIs for portfolio management, accounting, risk management, and investment operations. SimCorp Dimension is part of the SimCorp One integrated platform, offering Web APIs, Data Distribution APIs, and Streaming APIs through the SimCorp Integration Model (SIM) for front-to-back office investment management.
 image: https://www.simcorp.com/logo.png
 url: https://www.simcorp.com
 created: '2024'
@@ -17,10 +13,10 @@ apis:
     humanURL: https://www.simcorp.com/products/simcorp-dimension
     baseURL: https://api.simcorp.com/dimension/v1
     tags:
-      - Portfolio Management
-      - Investment Data
-      - Financial Services
       - Asset Management
+      - Financial Services
+      - Investment Data
+      - Portfolio Management
     properties:
       - type: Documentation
         url: https://developer.simcorp.com/dimension/data-api
@@ -40,10 +36,10 @@ apis:
     humanURL: https://www.simcorp.com/products/simcorp-dimension/integration
     baseURL: https://api.simcorp.com/dimension/integration/v1
     tags:
-      - Integration
       - Data Synchronization
-      - Workflow Automation
       - Financial Services
+      - Integration
+      - Workflow Automation
     properties:
       - type: Documentation
         url: https://developer.simcorp.com/dimension/integration-api
@@ -64,9 +60,9 @@ apis:
     baseURL: https://api.simcorp.com/dimension/analytics/v1
     tags:
       - Analytics
-      - Risk Management
       - Performance
       - Reporting
+      - Risk Management
     properties:
       - type: Documentation
         url: https://developer.simcorp.com/dimension/analytics-api
@@ -79,17 +75,15 @@ apis:
         email: apisupport@simcorp.com
         url: https://www.simcorp.com/support
   - name: SimCorp Dimension Web API
-    description: Web API providing HTTP-based interfaces for accessing and 
-      manipulating SimCorp Dimension data in real-time, supporting stateless 
-      RESTful operations across the investment management lifecycle.
+    description: Web API providing HTTP-based interfaces for accessing and manipulating SimCorp Dimension data in real-time, supporting stateless RESTful operations across the investment management lifecycle.
     image: https://www.simcorp.com/api-logo.png
     humanURL: https://www.simcorp.com/solutions/simcorp-one
     baseURL: https://api.simcorp.com/dimension/web/v1
     tags:
-      - Web API
-      - REST
       - Investment Management
       - Real-Time Data
+      - REST
+      - Web API
     properties:
       - type: Documentation
         url: https://thesim.dev/
@@ -98,16 +92,14 @@ apis:
         email: apisupport@simcorp.com
         url: https://www.simcorp.com/support
   - name: SimCorp Dimension Data Distribution API
-    description: API for distributing and sharing investment data across 
-      integrated systems, supporting event streaming channels and direct data 
-      access from SimCorp Dimension.
+    description: API for distributing and sharing investment data across integrated systems, supporting event streaming channels and direct data access from SimCorp Dimension.
     image: https://www.simcorp.com/api-logo.png
     humanURL: https://www.simcorp.com/solutions/simcorp-one/data-management
     baseURL: https://api.simcorp.com/dimension/datadistribution/v1
     tags:
       - Data Distribution
-      - Event Streaming
       - Data Sharing
+      - Event Streaming
       - Integration
     properties:
       - type: Documentation
@@ -117,16 +109,15 @@ apis:
         email: apisupport@simcorp.com
         url: https://www.simcorp.com/support
   - name: SimCorp Dimension Streaming API
-    description: Real-time streaming API for delivering live investment data, 
-      market updates, and event-driven notifications from SimCorp Dimension.
+    description: Real-time streaming API for delivering live investment data, market updates, and event-driven notifications from SimCorp Dimension.
     image: https://www.simcorp.com/api-logo.png
     humanURL: https://www.simcorp.com/solutions/simcorp-one/data-management
     baseURL: https://api.simcorp.com/dimension/streaming/v1
     tags:
-      - Streaming
-      - Real-Time Data
       - Event-Driven
       - Market Data
+      - Real-Time Data
+      - Streaming
     properties:
       - type: Documentation
         url: https://thesim.dev/
@@ -154,15 +145,13 @@ common:
   - type: Reporting
     url: https://www.simcorp.com/solutions/simcorp-one/reporting
   - type: Client Communications
-    url: 
-      https://www.simcorp.com/solutions/simcorp-one/Client-Communications-and-Regulatory-Reporting
+    url: https://www.simcorp.com/solutions/simcorp-one/Client-Communications-and-Regulatory-Reporting
   - type: Partners
     url: https://www.simcorp.com/partners/open-platform-partners
   - type: Wikipedia
     url: https://en.wikipedia.org/wiki/SimCorp
   - type: News
-    url: 
-      https://www.simcorp.com/about-us/news/2024/simcorp-introduces-new-flagship-platform-simcorp-one
+    url: https://www.simcorp.com/about-us/news/2024/simcorp-introduces-new-flagship-platform-simcorp-one
   - type: Community
     url: https://www.dimensionalcommunity.com/insights
   - type: JSON-LD
@@ -176,19 +165,19 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 tags:
+  - Accounting
+  - Asset Management
+  - Compliance
+  - Data Distribution
+  - Enterprise Software
+  - Financial Data
+  - Financial Technology
   - Investment Management
   - Portfolio Management
-  - Asset Management
-  - Financial Technology
   - Risk Management
-  - Financial Data
-  - Enterprise Software
-  - Trading
-  - Compliance
-  - Accounting
-  - Data Distribution
-  - Streaming
   - SimCorp One
+  - Streaming
+  - Trading
 include:
   - name: Developer Portal
     url: https://developer.simcorp.com
