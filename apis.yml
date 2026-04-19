@@ -3,7 +3,7 @@ description: Investment management software solution providing APIs for portfoli
 image: https://www.simcorp.com/logo.png
 url: https://www.simcorp.com
 created: '2024'
-modified: '2026-03-03'
+modified: '2026-04-18'
 apis:
   - name: SimCorp Dimension Data API
     description: >-
@@ -68,7 +68,7 @@ apis:
         url: https://developer.simcorp.com/dimension/analytics-api
       - type: OpenAPI
         url: https://api.simcorp.com/dimension/analytics/v1/openapi.json
-      - type: Rate Limits
+      - type: RateLimits
         url: https://developer.simcorp.com/dimension/rate-limits
     contact:
       - FN: SimCorp API Support
@@ -128,7 +128,7 @@ apis:
 common:
   - type: Portal
     url: https://www.simcorp.com/solutions/simcorp-one
-  - type: Data Model Portal
+  - type: Documentation
     url: https://thesim.dev/
   - type: Portfolio Management
     url: https://www.simcorp.com/solutions/simcorp-one/portfolio-management
@@ -148,18 +148,46 @@ common:
     url: https://www.simcorp.com/solutions/simcorp-one/Client-Communications-and-Regulatory-Reporting
   - type: Partners
     url: https://www.simcorp.com/partners/open-platform-partners
-  - type: Wikipedia
+  - type: Resources
     url: https://en.wikipedia.org/wiki/SimCorp
-  - type: News
+  - type: Resources
     url: https://www.simcorp.com/about-us/news/2024/simcorp-introduces-new-flagship-platform-simcorp-one
-  - type: Community
+  - type: Support
     url: https://www.dimensionalcommunity.com/insights
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/simcorp-dimension-context.jsonld
   - type: JSONSchema
     url: json-schema/simcorp-dimension-portfolio-schema.json
   - type: JSONSchema
     url: json-schema/simcorp-dimension-instrument-schema.json
+  - type: Features
+    data:
+      - Front-to-back investment management
+      - Real-time portfolio data and analytics
+      - Event-driven streaming data distribution
+      - Risk and performance measurement
+      - Accounting and operations management
+      - Trading and compliance monitoring
+      - Client communications and regulatory reporting
+      - Open platform integration model
+  - type: UseCases
+    data:
+      - Portfolio management and analysis
+      - Investment data integration and distribution
+      - Risk and performance reporting
+      - Regulatory compliance and reporting
+      - Real-time market data streaming
+      - Multi-asset investment operations
+  - type: Integrations
+    data:
+      - Bloomberg
+      - Reuters/Refinitiv
+      - SWIFT
+      - Clearstream
+      - Euroclear
+      - Microsoft Excel
+      - Tableau
+      - Power BI
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
