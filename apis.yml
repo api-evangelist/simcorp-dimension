@@ -188,6 +188,10 @@ common:
       - Microsoft Excel
       - Tableau
       - Power BI
+  - type: Integrations
+    url: https://www.simcorp.com/Partners/Open-Platform-Partners
+integrations:
+  - name: SimCorp partners
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
