@@ -126,6 +126,10 @@ apis:
         email: apisupport@simcorp.com
         url: https://www.simcorp.com/support
 common:
+  - type: GitHubOrganization
+    url: https://github.com/SimCorp
+  - type: LinkedIn
+    url: https://www.linkedin.com/showcase/simcorp-dimension
   - type: Portal
     url: https://www.simcorp.com/solutions/simcorp-one
   - type: Documentation
