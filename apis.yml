@@ -126,6 +126,8 @@ apis:
         email: apisupport@simcorp.com
         url: https://www.simcorp.com/support
 common:
+  - type: DomainSecurity
+    url: security/simcorp-dimension-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/SimCorp
   - type: LinkedIn
