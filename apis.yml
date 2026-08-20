@@ -27,6 +27,11 @@ apis:
     baseURL: https://api.simcorp.com/dimension/v1
     tags:
       - Asset Management
+      - Financial-Services
+      - Investment Data
+      - Portfolio-Management
+    tags_raw:
+      - Asset Management
       - Financial Services
       - Investment Data
       - Portfolio Management
@@ -49,6 +54,11 @@ apis:
     humanURL: https://www.simcorp.com/products/simcorp-dimension/integration
     baseURL: https://api.simcorp.com/dimension/integration/v1
     tags:
+      - Data Synchronization
+      - Financial-Services
+      - Integration
+      - Workflow-Automation
+    tags_raw:
       - Data Synchronization
       - Financial Services
       - Integration
@@ -216,6 +226,20 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 tags:
+  - Accounting
+  - Asset Management
+  - Compliance
+  - Data Distribution
+  - Enterprise Software
+  - Financial Data
+  - Financial Technology
+  - Investment Management
+  - Portfolio-Management
+  - Risk Management
+  - SimCorp One
+  - Streaming
+  - Trading
+tags_raw:
   - Accounting
   - Asset Management
   - Compliance
