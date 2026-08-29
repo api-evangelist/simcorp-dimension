@@ -1,118 +1,73 @@
 name: SimCorp Dimension
-description: Investment management software solution providing APIs for portfolio management, accounting, risk management, and investment operations. SimCorp Dimension is part of the SimCorp One integrated platform, offering Web APIs, Data Distribution APIs, and Streaming APIs through the SimCorp Integration Model (SIM) for front-to-back office investment management.
+description: >-
+  SimCorp Dimension is the investment management system at the core of SimCorp One, the
+  front-to-back platform SimCorp A/S (Copenhagen; part of Deutsche Boerse Group) sells to asset
+  managers, insurers, pension funds, sovereign wealth funds and central banks. Its integration
+  surface is the SimCorp Integration Model (SIM), which SimCorp presents as three API families —
+  Web APIs for synchronous HTTP access, Data Distribution APIs for bulk and channel-based data
+  sharing, and Streaming APIs for real-time, event-driven delivery — spanning portfolio
+  management, trading and compliance, risk and performance, accounting, operations, data
+  management and regulatory reporting. The reference documentation, Swagger documentation,
+  example code and standardized Message Format Models are published on the SimCorp Data Model
+  Portal at thesim.dev, which is credential-gated: SimCorp employees sign in with corporate SSO,
+  and clients, vendors and partners sign in with a portal account SimCorp issues. No OpenAPI,
+  AsyncAPI, GraphQL SDL or WSDL is reachable anonymously, and there is no self-service sign-up,
+  trial or published pricing — API access follows from a SimCorp One licence.
 deliveryModel:
   model: unknown
   open_source: false
-  commercial: false
+  commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
-  source:
-  - none
-  generated: '2026-08-28'
-  method: derived
-specificationVersion: '0.23'
-accessModel:
-  pricing: freemium
-  onboarding: unknown
-  trial: false
-  try_now: false
-  public: false
-  label: Freemium
+  label: Commercial enterprise licence — no anonymously callable host
   confidence: medium
   source:
   - plans
-  generated: '2026-07-22'
+  - probe
+  generated: '2026-08-29'
   method: derived
-image: https://www.simcorp.com/logo.png
+specificationVersion: '0.23'
+accessModel:
+  pricing: enterprise
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Credentials issued by SimCorp
+  confidence: high
+  source:
+  - plans
+  - probe
+  generated: '2026-08-29'
+  method: derived
+image: https://avatars.githubusercontent.com/u/62388281?v=4
 url: https://www.simcorp.com
-created: '2024'
-modified: '2026-04-18'
+created: '2024-01-01'
+modified: '2026-08-29'
+# 2026-08-29 enrichment pass. Three API entries carried by earlier rounds — "SimCorp Dimension
+# Data API", "SimCorp Dimension Integration API" and "SimCorp Dimension Analytics API" — were
+# removed. SimCorp names no such products anywhere on its public surface; every URL supporting
+# them was fabricated by a bulk scaffold sweep and every one of them is dead: their humanURLs
+# (www.simcorp.com/products/simcorp-dimension*) return 404, and their Documentation, OpenAPI,
+# Authentication, Webhooks and RateLimits properties pointed at developer.simcorp.com, a host
+# that does not resolve (NXDOMAIN). The three entries retained below are the three API families
+# SimCorp itself names on thesim.dev.
 apis:
-  - name: SimCorp Dimension Data API
-    description: >-
-      RESTful API for accessing portfolio data, positions, transactions, and market
-      data from SimCorp Dimension.
-    image: https://www.simcorp.com/api-logo.png
-    humanURL: https://www.simcorp.com/products/simcorp-dimension
-    baseURL: https://api.simcorp.com/dimension/v1
-    tags:
-      - Asset Management
-      - Financial-Services
-      - Investment Data
-      - Portfolio-Management
-    tags_raw:
-      - Asset Management
-      - Financial Services
-      - Investment Data
-      - Portfolio Management
-    properties:
-      - type: Documentation
-        url: https://developer.simcorp.com/dimension/data-api
-      - type: OpenAPI
-        url: https://api.simcorp.com/dimension/v1/openapi.json
-      - type: Authentication
-        url: https://developer.simcorp.com/dimension/authentication
-    contact:
-      - FN: SimCorp API Support
-        email: apisupport@simcorp.com
-        url: https://www.simcorp.com/support
-  - name: SimCorp Dimension Integration API
-    description: >-
-      API for integrating third-party systems with SimCorp Dimension for data synchronization
-      and workflow automation.
-    image: https://www.simcorp.com/api-logo.png
-    humanURL: https://www.simcorp.com/products/simcorp-dimension/integration
-    baseURL: https://api.simcorp.com/dimension/integration/v1
-    tags:
-      - Data Synchronization
-      - Financial-Services
-      - Integration
-      - Workflow-Automation
-    tags_raw:
-      - Data Synchronization
-      - Financial Services
-      - Integration
-      - Workflow Automation
-    properties:
-      - type: Documentation
-        url: https://developer.simcorp.com/dimension/integration-api
-      - type: OpenAPI
-        url: https://api.simcorp.com/dimension/integration/v1/openapi.json
-      - type: Webhooks
-        url: https://developer.simcorp.com/dimension/webhooks
-    contact:
-      - FN: SimCorp API Support
-        email: apisupport@simcorp.com
-        url: https://www.simcorp.com/support
-  - name: SimCorp Dimension Analytics API
-    description: >-
-      API for accessing analytics, performance metrics, risk calculations, and reporting
-      data.
-    image: https://www.simcorp.com/api-logo.png
-    humanURL: https://www.simcorp.com/products/simcorp-dimension/analytics
-    baseURL: https://api.simcorp.com/dimension/analytics/v1
-    tags:
-      - Analytics
-      - Performance
-      - Reporting
-      - Risk Management
-    properties:
-      - type: Documentation
-        url: https://developer.simcorp.com/dimension/analytics-api
-      - type: OpenAPI
-        url: https://api.simcorp.com/dimension/analytics/v1/openapi.json
-      - type: RateLimits
-        url: https://developer.simcorp.com/dimension/rate-limits
-    contact:
-      - FN: SimCorp API Support
-        email: apisupport@simcorp.com
-        url: https://www.simcorp.com/support
   - name: SimCorp Dimension Web API
-    description: Web API providing HTTP-based interfaces for accessing and manipulating SimCorp Dimension data in real-time, supporting stateless RESTful operations across the investment management lifecycle.
-    image: https://www.simcorp.com/api-logo.png
-    humanURL: https://www.simcorp.com/solutions/simcorp-one
-    baseURL: https://api.simcorp.com/dimension/web/v1
+    description: >-
+      Web API providing HTTP-based interfaces for accessing and manipulating SimCorp Dimension
+      data in real time, supporting stateless RESTful operations across the investment management
+      lifecycle. Named by SimCorp on the Data Model Portal home page; the reference and Swagger
+      documentation require portal credentials.
+    image: https://avatars.githubusercontent.com/u/62388281?v=4
+    humanURL: https://thesim.dev/
+    x-base-url-status: not-published
+    x-base-url-note: >-
+      SimCorp publishes no base URL for this API. api.simcorp.com is a real SimCorp-controlled
+      DNS record resolving into a Microsoft/Azure range, but 443 does not answer anonymously
+      (one 12s attempt, no response), and no SimCorp page states a host or path. SimCorp
+      Dimension is deployed per client, so the callable host is tenant-specific. The previous
+      value, https://api.simcorp.com/dimension/web/v1, was a scaffold and has been removed
+      rather than guessed at again.
     tags:
       - Investment Management
       - Real-Time Data
@@ -121,15 +76,22 @@ apis:
     properties:
       - type: Documentation
         url: https://thesim.dev/
+      - type: GettingStarted
+        url: https://thesim.dev/gettingstarted/
     contact:
-      - FN: SimCorp API Support
-        email: apisupport@simcorp.com
-        url: https://www.simcorp.com/support
+      - FN: SimCorp
+        url: https://www.simcorp.com/about-us/contact
   - name: SimCorp Dimension Data Distribution API
-    description: API for distributing and sharing investment data across integrated systems, supporting event streaming channels and direct data access from SimCorp Dimension.
-    image: https://www.simcorp.com/api-logo.png
+    description: >-
+      API for distributing and sharing investment data across integrated systems, supporting
+      event streaming channels and direct data access from SimCorp Dimension. Named by SimCorp on
+      the Data Model Portal home page alongside the Web APIs and Streaming APIs.
+    image: https://avatars.githubusercontent.com/u/62388281?v=4
     humanURL: https://www.simcorp.com/solutions/simcorp-one/data-management
-    baseURL: https://api.simcorp.com/dimension/datadistribution/v1
+    x-base-url-status: not-published
+    x-base-url-note: >-
+      No base URL published. Previous value https://api.simcorp.com/dimension/datadistribution/v1
+      was a scaffold; removed.
     tags:
       - Data Distribution
       - Data Sharing
@@ -138,15 +100,22 @@ apis:
     properties:
       - type: Documentation
         url: https://thesim.dev/
+      - type: GettingStarted
+        url: https://thesim.dev/gettingstarted/
     contact:
-      - FN: SimCorp API Support
-        email: apisupport@simcorp.com
-        url: https://www.simcorp.com/support
+      - FN: SimCorp
+        url: https://www.simcorp.com/about-us/contact
   - name: SimCorp Dimension Streaming API
-    description: Real-time streaming API for delivering live investment data, market updates, and event-driven notifications from SimCorp Dimension.
-    image: https://www.simcorp.com/api-logo.png
+    description: >-
+      Real-time streaming API for delivering live investment data, market updates and event-driven
+      notifications from SimCorp Dimension. Named by SimCorp on the Data Model Portal home page.
+      No AsyncAPI or event catalog is published anonymously.
+    image: https://avatars.githubusercontent.com/u/62388281?v=4
     humanURL: https://www.simcorp.com/solutions/simcorp-one/data-management
-    baseURL: https://api.simcorp.com/dimension/streaming/v1
+    x-base-url-status: not-published
+    x-base-url-note: >-
+      No base URL published. Previous value https://api.simcorp.com/dimension/streaming/v1 was a
+      scaffold; removed.
     tags:
       - Event-Driven
       - Market Data
@@ -155,21 +124,48 @@ apis:
     properties:
       - type: Documentation
         url: https://thesim.dev/
+      - type: GettingStarted
+        url: https://thesim.dev/gettingstarted/
     contact:
-      - FN: SimCorp API Support
-        email: apisupport@simcorp.com
-        url: https://www.simcorp.com/support
+      - FN: SimCorp
+        url: https://www.simcorp.com/about-us/contact
 common:
+  - type: Website
+    url: https://www.simcorp.com/
   - type: DomainSecurity
     url: security/simcorp-dimension-domain-security.yml
+  - type: TrustCenter
+    url: security/simcorp-dimension-trust-center.yml
+  - type: Compliance
+    url: security/simcorp-dimension-trust-center.yml
+  - type: Conformance
+    url: conformance/simcorp-dimension-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/simcorp-dimension-lifecycle.yml
+  - type: Packages
+    url: packages/simcorp-dimension-packages.yml
+  - type: LLMsTxt
+    url: llms/simcorp-dimension-llms.txt
   - type: GitHubOrganization
     url: https://github.com/SimCorp
   - type: LinkedIn
     url: https://www.linkedin.com/showcase/simcorp-dimension
   - type: Portal
-    url: https://www.simcorp.com/solutions/simcorp-one
+    url: https://thesim.dev/
   - type: Documentation
     url: https://thesim.dev/
+  - type: GettingStarted
+    url: https://thesim.dev/gettingstarted/
+  - type: Blog
+    url: https://www.simcorp.com/insights
+  - type: Support
+    url: https://www.simcorp.com/about-us/contact
+  - type: Community
+    url: https://www.dimensionalcommunity.com/insights
+  - type: TermsOfService
+    url: https://www.simcorp.com/legal/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.simcorp.com/legal/privacy-policy
   - type: Portfolio Management
     url: https://www.simcorp.com/solutions/simcorp-one/portfolio-management
   - type: Trading and Compliance
@@ -192,8 +188,6 @@ common:
     url: https://en.wikipedia.org/wiki/SimCorp
   - type: Resources
     url: https://www.simcorp.com/about-us/news/2024/simcorp-introduces-new-flagship-platform-simcorp-one
-  - type: Support
-    url: https://www.dimensionalcommunity.com/insights
   - type: JSONLD
     url: json-ld/simcorp-dimension-context.jsonld
   - type: JSONSchema
@@ -265,13 +259,33 @@ tags_raw:
   - Streaming
   - Trading
 include:
-  - name: Developer Portal
-    url: https://developer.simcorp.com
-  - name: API Status
-    url: https://status.simcorp.com
-  - name: Release Notes
-    url: https://developer.simcorp.com/changelog
   - name: SimCorp Data Model Portal
     url: https://thesim.dev/
+  - name: Trust Center
+    url: https://www.simcorp.com/trust-center
   - name: Dimensional Community
     url: https://www.dimensionalcommunity.com/insights
+x-enrichment:
+  date: '2026-08-29'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    SimCorp's own Data Model Portal at thesim.dev carries the Web API, Data Distribution API and
+    Streaming API reference plus the Swagger documentation, and /gettingstarted/ resolves to a
+    sign-in wall offering corporate SSO for SimCorp employees and a SimCorp-issued username and
+    password for clients, vendors and partners — there is no registration path at all, so the
+    contract is unreadable without an existing SimCorp relationship.
+  evidence:
+    - url: https://thesim.dev/gettingstarted/
+      status: 200
+    - url: https://thesim.dev/openapi.json
+      status: 404
+    - url: https://developer.simcorp.com/dimension/data-api
+      status: 0
+    - url: https://api.simcorp.com/dimension/v1/openapi.json
+      status: 0
+  checked: '2026-08-29'

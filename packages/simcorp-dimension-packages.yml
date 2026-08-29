@@ -1,0 +1,67 @@
+specification: API Commons Packages
+specificationVersion: '0.1'
+provider: SimCorp Dimension
+providerId: simcorp-dimension
+generated: '2026-08-29'
+method: searched
+source: https://registry.npmjs.org/sc-cli
+modified: '2026-08-29'
+description: >-
+  First-party client library search across npm, PyPI, Maven Central, NuGet, RubyGems, crates.io
+  and the SimCorp GitHub organization. SimCorp ships no maintained SDK for the SimCorp Dimension
+  Web / Data Distribution / Streaming APIs on any public registry. One first-party npm package
+  exists — sc-cli, published from sik@simcorp.com against the internal simhub.simcorp.com git
+  host — but it has not shipped a release since October 2018 and its source repository is not
+  public, so its command surface cannot be read. It predates the SimCorp One / SIM API surface
+  documented on thesim.dev and should not be treated as an SDK for it.
+official_package_count: 1
+maintained_package_count: 0
+packages:
+  - name: sc-cli
+    registry: npm
+    url: https://www.npmjs.com/package/sc-cli
+    language: javascript
+    official: true
+    official_evidence: >-
+      Sole npm maintainer is simcorp.sik <sik@simcorp.com>; repository field points at
+      https://simhub.simcorp.com/SimCorp/sc-cli, SimCorp's internal git host.
+    version: 0.0.16
+    published: '2018-10-01'
+    description: A command line interface for SimCorp
+    covers_api: unknown
+    note: >-
+      Last release 2018-10-01, nearly eight years stale and still on a 0.0.x version. The
+      repository host is not publicly reachable, so neither the command surface nor which
+      SimCorp product it drives can be established. Recorded as a first-party artifact, not as
+      a client library for the APIs in this profile.
+registries_checked:
+  - registry: npm
+    query: simcorp
+    result: >-
+      Two hits. sc-cli (first-party, recorded above) and @simcorp-mel/simui 1.0.2 (published
+      2026-05-30 by npm user melmosillias, a Vue 3 / PrimeVue application shell) — not
+      first-party, not recorded.
+  - registry: pypi
+    query: simcorp
+    result: 404 on https://pypi.org/pypi/simcorp/json — no first-party package.
+  - registry: maven-central
+    query: simcorp
+    result: 0 results from search.maven.org solrsearch.
+  - registry: nuget
+    query: simcorp
+    result: 0 totalHits from azuresearch-usnc.nuget.org, despite SimCorp being a .NET shop.
+  - registry: github
+    query: https://api.github.com/orgs/SimCorp/repos
+    result: >-
+      4 public repos, none an API client — nats-topology-visualiser (C#, 2022),
+      NetMQ.Security (C#, 2024), DevChallenge (C#, 2021), scd-actions-pipeline (PowerShell, 2021).
+  - registry: rubygems
+    query: simcorp
+    result: No first-party package.
+  - registry: crates.io
+    query: simcorp
+    result: No first-party package.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

@@ -1,0 +1,39 @@
+specification: API Commons MCPServer
+specificationVersion: '0.1'
+provider: SimCorp Dimension
+providerId: simcorp-dimension
+generated: '2026-08-29'
+method: searched
+source: https://github.com/SimCorp + npm registry search + web search
+modified: '2026-08-29'
+status: absent
+description: >-
+  No Model Context Protocol server exists for SimCorp Dimension — neither a hosted remote
+  endpoint nor a locally-installable stdio package. The SimCorp GitHub organization holds four
+  public repositories, none MCP-related; npm and PyPI carry no SimCorp MCP package; and SimCorp's
+  own surfaces (simcorp.com, thesim.dev) never use the term. No candidate tool list could be
+  derived either, because SimCorp publishes no OpenAPI to derive one from — the Swagger
+  documentation SimCorp advertises lives behind the thesim.dev portal login.
+  No endpoint URL is guessed here. mode is none.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+searches:
+  - source: https://api.github.com/orgs/SimCorp/repos
+    status: 200
+    result: 4 public repos, none MCP.
+  - source: https://registry.npmjs.org/-/v1/search?text=simcorp
+    status: 200
+    result: sc-cli (2018 CLI) and @simcorp-mel/simui (third-party UI shell). No MCP package.
+  - source: https://thesim.dev/
+    status: 200
+    result: Data Model Portal home names Web APIs, Data Distribution APIs and Streaming APIs. No MCP.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

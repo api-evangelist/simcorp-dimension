@@ -1,0 +1,88 @@
+specification: API Commons WellKnown
+specificationVersion: '0.1'
+provider: SimCorp Dimension
+providerId: simcorp-dimension
+generated: '2026-08-29'
+method: probed
+source: https://www.simcorp.com/.well-known/ + https://thesim.dev/.well-known/
+modified: '2026-08-29'
+description: >-
+  RFC 8615 well-known probe of every host in this profile. NOTHING IS SERVED. Both live hosts
+  answer every /.well-known/ path with an HTML error page — www.simcorp.com returns a 404 from
+  its Next.js marketing site, thesim.dev returns a 404 from its Django portal — so there is no
+  security.txt, no OpenID/OAuth discovery document, no api-catalog, no ai-plugin.json and no
+  agent card anywhere on SimCorp's public surface. Because every path missed, this file
+  deliberately carries NO WellKnown or SecurityTxt pointer in apis.yml: it documents an absence,
+  and an absence must not be scored as a presence.
+  Two hosts named in the previous profile could not be probed at all: developer.simcorp.com and
+  status.simcorp.com do not resolve (NXDOMAIN), and api.simcorp.com resolves to 50.85.47.9 but
+  never completes a TLS connection on 443 within a 12s ceiling.
+hits: 0
+hosts:
+  - host: www.simcorp.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: thesim.dev
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: developer.simcorp.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+        file: null
+    note: NXDOMAIN — host does not resolve. Not probeable.
+  - host: status.simcorp.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+        file: null
+    note: NXDOMAIN — host does not resolve. Not probeable.
+  - host: api.simcorp.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+        file: null
+    note: >-
+      Resolves to 50.85.47.9 but 443 never answers within the 12s probe ceiling. One attempt,
+      not retried. Recorded as no response.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

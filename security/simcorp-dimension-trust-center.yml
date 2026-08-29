@@ -1,0 +1,63 @@
+specification: API Commons TrustCenter
+specificationVersion: '0.1'
+provider: SimCorp Dimension
+providerId: simcorp-dimension
+generated: '2026-08-29'
+method: searched
+source: https://www.simcorp.com/trust-center
+modified: '2026-08-29'
+description: >-
+  SimCorp runs a public Trust Center at simcorp.com/trust-center with three published sections —
+  Security, Privacy and Compliance. It is a narrative trust center rather than a document portal:
+  it names one third-party attestation (SOC 2 Type 2) and describes the control environment, but
+  the report itself is released only through an account representative, and no certificate
+  artifacts, sub-processor list or continuous-monitoring dashboard are published.
+url: https://www.simcorp.com/trust-center
+public: true
+self_service_documents: false
+sections:
+  - name: Security
+    url: https://www.simcorp.com/trust-center/security
+    status: 200
+    summary: >-
+      Describes independently vetted external penetration testing of applications and hosted
+      environments, and security assurance (penetration testing, code review, architecture
+      analysis) embedded in SAFe-based development. Names no certification on this page.
+  - name: Privacy
+    url: https://www.simcorp.com/trust-center/privacy
+    status: 200
+  - name: Compliance
+    url: https://www.simcorp.com/trust-center/compliance
+    status: 200
+    summary: >-
+      Application management controls (ITIL-based process, access management, change management,
+      incident tracking) are stated to be covered by SimCorp's SOC 2 Type 2 report. Also states
+      geographic data-location commitments for EU clients.
+certifications:
+  - name: SOC 2 Type 2
+    scope: >-
+      Application Management controls — ITIL-based processes, access management, change
+      management, incident tracking.
+    issuer: Independent third party (auditor not named on the page)
+    evidence_url: https://www.simcorp.com/trust-center/compliance
+    quote: >-
+      "The relevant controls described above are covered by our SOC2 type 2 report. This report,
+      prepared by a reputable and independent third party, is designed to assure clients of a
+      secure and controlled operations environment"
+    document_public: false
+    obtain: Request a copy through a SimCorp account representative.
+practices:
+  - name: Third-party penetration testing
+    evidence_url: https://www.simcorp.com/trust-center/security
+    quote: >-
+      "SimCorp engages external independently vetted penetration testing partners to evaluate
+      the security of the applications and its hosted environments."
+not_found:
+  - ISO 27001 — not named anywhere in the Trust Center.
+  - ISAE 3402 — not named.
+  - PCI DSS / HIPAA / FedRAMP — not named (and not expected for this market).
+  - GDPR — data protection law and EU data location are discussed, but the regulation is not cited by name on the compliance page.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

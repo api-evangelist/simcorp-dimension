@@ -1,0 +1,57 @@
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: SimCorp Dimension
+providerId: simcorp-dimension
+generated: '2026-08-29'
+method: searched
+source: https://thesim.dev/ + https://www.simcorp.com/sitemap.xml
+modified: '2026-08-29'
+description: >-
+  Lifecycle posture for the SimCorp Dimension API surface, established by probe rather than by
+  reading a policy — because no policy is published. SimCorp operates no public status page, no
+  public changelog or release-notes feed for its APIs, and no deprecation or sunset policy that a
+  consumer can read without portal credentials. Two hosts a previous version of this profile
+  claimed for exactly these purposes — status.simcorp.com and developer.simcorp.com/changelog —
+  do not resolve, and were never SimCorp pages.
+status_page:
+  present: false
+  url: null
+  evidence:
+    url: https://status.simcorp.com
+    status: 0
+    note: NXDOMAIN. Host does not resolve. No status page found on any other SimCorp host or on the common third-party providers.
+deprecation_policy:
+  present: false
+  url: null
+  sunset_header: unknown
+  deprecation_header: unknown
+  evidence:
+    url: https://thesim.dev/gettingstarted/
+    status: 200
+    note: >-
+      Any deprecation policy would live inside the credentialed Data Model Portal. Nothing is
+      readable anonymously, and RFC 8594 Sunset/Deprecation header behaviour cannot be observed
+      because no endpoint answers unauthenticated.
+changelog:
+  present: false
+  url: null
+  evidence:
+    url: https://developer.simcorp.com/changelog
+    status: 0
+    note: NXDOMAIN. The nearest public dated stream is the corporate newsroom at simcorp.com/about-us/news, which announces partnerships and product launches, not API changes.
+sla:
+  published: false
+  evidence:
+    url: https://www.simcorp.com/sitemap.xml
+    status: 200
+    note: 1,213 URLs, no SLA or uptime-commitment page. SimCorp One is contracted per client; any SLA is contractual.
+versioning:
+  scheme: unknown
+  note: >-
+    Path versioning is implied by the SimCorp Integration Model naming, but no version policy is
+    published and no spec is readable, so this is left unknown rather than asserted.
+deprecated_operations: []
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

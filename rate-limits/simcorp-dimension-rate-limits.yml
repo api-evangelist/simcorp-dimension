@@ -4,122 +4,40 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: SimCorp Dimension
 providerId: simcorp-dimension
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
+generated: '2026-08-29'
+method: searched
+source: https://thesim.dev/
+description: >-
+  SimCorp publishes no rate-limit documentation on any public surface. The SimCorp Data Model
+  Portal (thesim.dev), which carries the Web API, Data Distribution API and Streaming API
+  reference plus the Swagger documentation, requires portal credentials — SimCorp employees via
+  corporate SSO, clients/vendors/partners via an assigned username and password. Nothing about
+  quotas, throttling windows, burst behaviour or 429 response headers is readable without an
+  account, and SimCorp Dimension is deployed per tenant, so any limits are likely contractual
+  rather than published. This file records that honest zero. The previous version of this file
+  carried a bulk-sweep scaffold (free 10/min, professional 100/min, enterprise 1000/min) that
+  SimCorp never published; it has been removed rather than left to read as a provider claim.
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
+policies: []
+probes:
+  - url: https://thesim.dev/gettingstarted/
+    status: 200
+    note: Sign-in wall. "Clients, vendors, and partners — sign in with the email and password assigned to your portal account."
+  - url: https://developer.simcorp.com/dimension/rate-limits
+    status: 0
+    note: Host developer.simcorp.com does not resolve (NXDOMAIN). This URL was a scaffold, not a SimCorp page.
+  - url: https://www.simcorp.com/robots.txt
+    status: 200
+    note: Marketing site only; sitemap.xml (1,213 URLs) contains no developer or API reference page.
 tags:
-  - Accounting
-  - Asset Management
-  - Compliance
-  - Data Distribution
-  - Enterprise Software
-  - Financial Data
-  - Financial Technology
   - Investment Management
-  - Portfolio Management
-  - Risk Management
-  - SimCorp One
-  - Streaming
-  - Trading
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the SimCorp Dimension API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
-limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - SimCorp Dimension Data API
-      - SimCorp Dimension Integration API
-      - SimCorp Dimension Analytics API
-      - SimCorp Dimension Web API
-      - SimCorp Dimension Data Distribution API
-      - SimCorp Dimension Streaming API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - SimCorp Dimension Data API
-      - SimCorp Dimension Integration API
-      - SimCorp Dimension Analytics API
-      - SimCorp Dimension Web API
-      - SimCorp Dimension Data Distribution API
-      - SimCorp Dimension Streaming API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - SimCorp Dimension Data API
-      - SimCorp Dimension Integration API
-      - SimCorp Dimension Analytics API
-      - SimCorp Dimension Web API
-      - SimCorp Dimension Data Distribution API
-      - SimCorp Dimension Streaming API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - SimCorp Dimension Data API
-      - SimCorp Dimension Integration API
-      - SimCorp Dimension Analytics API
-      - SimCorp Dimension Web API
-      - SimCorp Dimension Data Distribution API
-      - SimCorp Dimension Streaming API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - SimCorp Dimension Data API
-      - SimCorp Dimension Integration API
-      - SimCorp Dimension Analytics API
-      - SimCorp Dimension Web API
-      - SimCorp Dimension Data Distribution API
-      - SimCorp Dimension Streaming API
-policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

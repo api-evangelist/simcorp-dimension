@@ -1,0 +1,97 @@
+specification: API Commons Conformance
+specificationVersion: '0.1'
+provider: SimCorp Dimension
+providerId: simcorp-dimension
+generated: '2026-08-29'
+method: searched
+source: https://www.simcorp.com/trust-center/compliance
+modified: '2026-08-29'
+description: >-
+  Cross-cutting and domain-standard conformance for SimCorp Dimension. Every technical assertion
+  here is unverifiable rather than false: SimCorp publishes no OpenAPI, AsyncAPI, GraphQL SDL,
+  WSDL or Postman collection on any public host, and the Swagger documentation it advertises sits
+  behind the thesim.dev portal login. Nothing in this file is inferred from a marketing page.
+  The one attested item is organizational, not protocol-level: a SOC 2 Type 2 report covering
+  application-management controls.
+contract_readable: false
+contract_probe_summary: >-
+  thesim.dev/{openapi.json,swagger.json,api-docs,docs} all 404; www.simcorp.com/openapi.json 404;
+  api.simcorp.com/dimension/v1/openapi.json never answered (443 timeout, one attempt);
+  developer.simcorp.com NXDOMAIN. No ?wsdl or ?singleWsdl surface reachable.
+conformance:
+  - id: soc2-type2
+    name: SOC 2 Type 2
+    conforms: true
+    evidence:
+      url: https://www.simcorp.com/trust-center/compliance
+      status: 200
+      quote: >-
+        "The relevant controls described above are covered by our SOC2 type 2 report."
+      note: Report itself is released only via a SimCorp account representative.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence:
+      url: https://www.simcorp.com/.well-known/oauth-authorization-server
+      status: 404
+      note: >-
+        No authorization-server metadata on any host. The thesim.dev portal itself signs users in
+        with Microsoft SSO (/accounts/microsoft/login/), but that is portal login, not API
+        authorization, and no API auth model is published.
+  - id: oidc
+    name: OpenID Connect
+    conforms: false
+    evidence:
+      url: https://www.simcorp.com/.well-known/openid-configuration
+      status: 404
+  - id: rfc9457
+    name: RFC 9457 Problem Details
+    conforms: unknown
+    evidence:
+      url: https://thesim.dev/gettingstarted/
+      status: 200
+      note: No readable contract or error reference; cannot be established either way.
+  - id: rfc9116
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence:
+      url: https://www.simcorp.com/.well-known/security.txt
+      status: 404
+  - id: rfc8615
+    name: RFC 8615 well-known URIs
+    conforms: false
+    evidence:
+      url: https://www.simcorp.com/.well-known/api-catalog
+      status: 404
+domain_standards:
+  note: >-
+    SimCorp Dimension sits in the securities / investment-management regime, where the standards
+    worth probing are ISO 20022, SWIFT MT, FIX and MiFID II reporting. NONE of them can be
+    confirmed from a contract, because there is no readable contract. The nearest evidence is
+    prose on a third-party community site describing SimCorp's Communication Server handling
+    SWIFT message processing and reconciliation with custodians and brokers — a capability claim,
+    not a declared message type in a spec, so it is recorded as unverified and scores nothing.
+    This is a reward-only dimension; an unverifiable standard is left unclaimed.
+  candidates:
+    - id: iso-20022
+      conforms: unknown
+      evidence:
+        url: https://www.dimensionalcommunity.com/simcorp-system-integration
+        status: 200
+        note: Third-party community page; names SWIFT message processing, no ISO 20022 message type declared in any spec.
+    - id: swift-mt
+      conforms: unknown
+      evidence:
+        url: https://www.dimensionalcommunity.com/simcorp-system-integration
+        status: 200
+        note: Same. Not read from a SimCorp-published contract.
+    - id: fix-protocol
+      conforms: unknown
+      evidence:
+        url: https://thesim.dev/
+        status: 200
+        note: Not named on any public SimCorp surface probed.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

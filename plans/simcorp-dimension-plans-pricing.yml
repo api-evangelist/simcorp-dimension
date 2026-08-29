@@ -4,206 +4,39 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: SimCorp Dimension
 providerId: simcorp-dimension
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-08-29'
+generated: '2026-08-29'
+method: searched
+source: https://www.simcorp.com/sitemap.xml
+description: >-
+  SimCorp publishes no plans, tiers or list pricing of any kind. SimCorp One (the platform
+  SimCorp Dimension is delivered inside) is sold as an enterprise licence and/or a managed
+  service through a sales motion — the 1,213-URL sitemap for simcorp.com contains no pricing
+  page, and there is no self-service sign-up, trial or developer plan. API access is a
+  consequence of holding a SimCorp licence, not a separately priced product. This file records
+  that honest zero. The previous version carried a bulk-sweep scaffold with invented Free /
+  Professional / Enterprise tiers and per-month quotas that SimCorp never published.
+plan_count: 0
+pricing_model: enterprise-contract
+public_pricing: false
+self_service_signup: false
+free_tier: false
+trial: false
+plans: []
+probes:
+  - url: https://www.simcorp.com/sitemap.xml
+    status: 200
+    note: 1,213 URLs; zero matches for /pricing, /plans, /signup or a developer plan page.
+  - url: https://www.simcorp.com/solutions/simcorp-one
+    status: 200
+    note: Product page ends in a "Talk to us" / contact motion; no prices, no tiers.
+  - url: https://thesim.dev/gettingstarted/
+    status: 200
+    note: Portal access is credential-issued to clients, vendors and partners; there is no sign-up.
 tags:
-  - Accounting
-  - Asset Management
-  - Compliance
-  - Data Distribution
-  - Enterprise Software
-  - Financial Data
-  - Financial Technology
   - Investment Management
-  - Portfolio Management
-  - Risk Management
-  - SimCorp One
-  - Streaming
-  - Trading
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: simcorp-dimension-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the SimCorp Dimension API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: SimCorp Dimension Data API
-      - name: SimCorp Dimension Integration API
-      - name: SimCorp Dimension Analytics API
-      - name: SimCorp Dimension Web API
-      - name: SimCorp Dimension Data Distribution API
-      - name: SimCorp Dimension Streaming API
-  - id: simcorp-dimension-pro
-    name: Professional
-    type: paid
-    description: Production tier for SimCorp Dimension. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: SimCorp Dimension Data API
-      - name: SimCorp Dimension Integration API
-      - name: SimCorp Dimension Analytics API
-      - name: SimCorp Dimension Web API
-      - name: SimCorp Dimension Data Distribution API
-      - name: SimCorp Dimension Streaming API
-  - id: simcorp-dimension-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for SimCorp Dimension. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.simcorp.com/dimension/v1
-          - https://api.simcorp.com/dimension/integration/v1
-          - https://api.simcorp.com/dimension/analytics/v1
-          - https://api.simcorp.com/dimension/web/v1
-          - https://api.simcorp.com/dimension/datadistribution/v1
-          - https://api.simcorp.com/dimension/streaming/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: SimCorp Dimension Data API
-      - name: SimCorp Dimension Integration API
-      - name: SimCorp Dimension Analytics API
-      - name: SimCorp Dimension Web API
-      - name: SimCorp Dimension Data Distribution API
-      - name: SimCorp Dimension Streaming API
+  - Enterprise Software
+  - Pricing
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,84 @@
+# SimCorp Dimension
+
+> SimCorp Dimension is the investment management system at the core of SimCorp One, SimCorp's
+> front-to-back platform for asset managers, insurers, pension funds, sovereign wealth funds and
+> central banks. Its integration surface is the SimCorp Integration Model (SIM), which SimCorp
+> describes as three API families: Web APIs (synchronous HTTP), Data Distribution APIs (bulk and
+> channel-based data access), and Streaming APIs (event-driven delivery).
+
+## Access reality — read this before planning an integration
+
+SimCorp publishes NO machine-readable contract on any anonymous surface. The SimCorp Data Model
+Portal at https://thesim.dev/ carries the reference documentation, the Swagger documentation,
+example code and the standardized Message Format Models, and all of it is behind a sign-in wall:
+SimCorp employees authenticate through corporate SSO, while clients, vendors and partners use a
+username and password issued by SimCorp. There is no public sign-up, no trial, no free tier and
+no published pricing. API access follows from holding a SimCorp One licence.
+
+Verified 2026-08-29:
+- https://thesim.dev/ — 200, marketing shell for the portal
+- https://thesim.dev/gettingstarted/ — 200, sign-in wall
+- https://thesim.dev/openapi.json, /swagger.json, /api-docs, /docs — 404
+- https://www.simcorp.com/openapi.json — 404
+- https://developer.simcorp.com — does not resolve (NXDOMAIN)
+- https://status.simcorp.com — does not resolve (NXDOMAIN)
+- https://api.simcorp.com — resolves, 443 does not answer
+
+An agent cannot call this API today. It can read the product surface and the trust posture, and
+it can tell a user what credentials they would need.
+
+## API families (named by SimCorp on thesim.dev)
+
+- Web APIs: HTTP interfaces over SimCorp Dimension data across the investment lifecycle.
+- Data Distribution APIs: distributing and sharing investment data across integrated systems.
+- Streaming APIs: real-time delivery of positions, market updates and event notifications.
+
+## Data models documented in the portal
+
+- SimCorp Integration Model (SIM) — entities, attributes, data types, domains and values
+- Coric Digital Engagement Portal
+- Investment Management Warehouse
+- SimCorp Standard Platform / Standard Configuration documentation
+
+## Product areas
+
+- https://www.simcorp.com/solutions/simcorp-one — SimCorp One platform
+- https://www.simcorp.com/solutions/simcorp-one/portfolio-management
+- https://www.simcorp.com/solutions/simcorp-one/trading-and-compliance
+- https://www.simcorp.com/solutions/simcorp-one/risk-and-performance
+- https://www.simcorp.com/solutions/simcorp-one/operations
+- https://www.simcorp.com/solutions/simcorp-one/accounting
+- https://www.simcorp.com/solutions/simcorp-one/data-management
+- https://www.simcorp.com/solutions/simcorp-one/reporting
+
+## Trust and compliance
+
+- https://www.simcorp.com/trust-center — Trust Center
+- https://www.simcorp.com/trust-center/security — external penetration testing, security in SAFe development
+- https://www.simcorp.com/trust-center/compliance — SOC 2 Type 2 report covering application-management controls; released via an account representative
+- https://www.simcorp.com/trust-center/privacy
+- No security.txt, no vulnerability disclosure policy and no bug bounty were found on any host.
+
+## Partners and community
+
+- https://www.simcorp.com/partners/open-platform-partners — Open Platform Partners
+- https://www.dimensionalcommunity.com/insights — Dimensional Community (independent SimCorp user community)
+
+## Client libraries
+
+None maintained. The only first-party package on any public registry is `sc-cli` on npm
+(0.0.16, published 2018-10-01, maintainer sik@simcorp.com), whose source lives on SimCorp's
+internal git host and whose relationship to these APIs cannot be established. The SimCorp GitHub
+organization (https://github.com/SimCorp) holds four public repositories, none an API client.
+
+## Company
+
+- https://www.simcorp.com — SimCorp A/S, Copenhagen; part of Deutsche Boerse Group
+- https://www.simcorp.com/legal/terms-of-use
+- https://www.simcorp.com/legal/privacy-policy
+- https://en.wikipedia.org/wiki/SimCorp
+
+---
+generated: 2026-08-29
+method: generated
+source: apis.yml + probed SimCorp public surfaces (thesim.dev, www.simcorp.com, github.com/SimCorp)
