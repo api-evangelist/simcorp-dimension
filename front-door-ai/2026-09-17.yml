@@ -1,0 +1,26 @@
+# Front Door AI Index — simcorp-dimension — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: simcorp-dimension
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.simcorp.com
+  final_host: www.simcorp.com
+  ownership: own
+  owner: simcorp-dimension
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 4
+  host_score: 4
+  density: 2.62
+  words: 1529
+  tiers:
+    agentic: 0
+    core: 4
+    model: 0
+  ambiguous: 1
+  top_terms:
+    AI: 4
+    intelligence: 1
