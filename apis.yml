@@ -239,7 +239,7 @@ tags:
   - Financial Data
   - Financial Technology
   - Investment Management
-  - Portfolio-Management
+  - Portfolio Management
   - Risk Management
   - SimCorp One
   - Streaming
@@ -258,6 +258,7 @@ tags_raw:
   - SimCorp One
   - Streaming
   - Trading
+  - Portfolio-Management
 include:
   - name: SimCorp Data Model Portal
     url: https://thesim.dev/
