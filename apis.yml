@@ -42,7 +42,7 @@ accessModel:
 image: https://avatars.githubusercontent.com/u/62388281?v=4
 url: https://www.simcorp.com
 created: '2024-01-01'
-modified: '2026-08-29'
+modified: '2026-10-06'
 # 2026-08-29 enrichment pass. Three API entries carried by earlier rounds — "SimCorp Dimension
 # Data API", "SimCorp Dimension Integration API" and "SimCorp Dimension Analytics API" — were
 # removed. SimCorp names no such products anywhere on its public surface; every URL supporting
@@ -130,6 +130,8 @@ apis:
       - FN: SimCorp
         url: https://www.simcorp.com/about-us/contact
 common:
+  - url: https://www.simcorp.com/rss.xml
+    type: BlogRSS
   - type: Website
     url: https://www.simcorp.com/
   - type: DomainSecurity
